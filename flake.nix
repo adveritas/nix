@@ -10,7 +10,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       systemSettings = {
         system = "x86_64-linux";
@@ -46,9 +46,14 @@
     };
 
     homeConfigurations = {
-      userSettings.username = home-manager.lib.homeManagerConfiguration {
+      user = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = systemSettings.system; };
         modules = [ ./profiles/nixos/home.nix ];
+        extraSpecialArgs = {
+            inherit inputs;
+            inherit systemSettings;
+            inherit userSettings;
+        };
       };
     };
   };
