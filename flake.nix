@@ -18,10 +18,6 @@
       userSettings = rec {
         name = "William Dreyer";
         username = "wdreyer";
-        email = "w.h.dreyer@icloud.com";
-        browser = "firefox";
-        term = "kitty";
-        editor = "neovim";
       };
 
     in {
