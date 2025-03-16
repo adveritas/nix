@@ -5,10 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
-      lib = nixpkgs.lib;
-
       systemSettings = {
         system = "x86_64-linux";
         hostname = "nixos";
@@ -27,7 +25,7 @@
 
     in {
     nixosConfigurations = {
-      nixos = lib.nixosSystem {
+      nixos = nixpkgs.lib.nixosSystem {
         system = systemSettings.system;
         modules =
           [
