@@ -14,7 +14,7 @@
       systemSettings = {
         system = "x86_64-linux";
         profile = "nixos";
-        hostname = "nixos";
+        hostname = "nixstation";
         timezone = "America/New_York";
         locale = "en_US.UTF-8";
       };
