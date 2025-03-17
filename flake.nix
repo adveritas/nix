@@ -27,6 +27,7 @@
         name = "William Dreyer";
         username = "wdreyer";
         email = "w.h.dreyer@icloud.com";
+        ssh-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID5aEdUeGsejEWV1Gc5WddRDqQs9wE54Vk+Ju/Cubath";
       };
 
       pkgs = import nixpkgs { system = systemSettings.system; };
