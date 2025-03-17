@@ -5,8 +5,8 @@
     enable = true;
     profiles.${userSettings.username} = {
       extensions = [
-        inputs.firefox-addons.packages.${systemSettings.system}.bitwarden
-        inputs.firefox-addons.packages.${systemSettings.system}.ublock-origin
+        #inputs.firefox-addons.packages.${systemSettings.system}.bitwarden
+        #inputs.firefox-addons.packages.${systemSettings.system}.ublock-origin
       ];
     };
   };
