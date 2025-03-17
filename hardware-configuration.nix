@@ -13,14 +13,13 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  networking.hostId = "9ee8cc01";
   fileSystems."/" =
     { device = "zroot/root";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7022-19C8";
+    { device = "/dev/disk/by-uuid/F350-4649";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -44,7 +43,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp13s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp14s0.useDHCP = lib.mkDefault true;
-
+  networking.hostId = "6abd1a21";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
