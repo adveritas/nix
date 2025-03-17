@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
@@ -18,7 +14,7 @@
       systemSettings = {
         system = "x86_64-linux";
         profile = "nixos";
-        hostname = "nixstation";
+        hostname = "nixos";
         timezone = "America/New_York";
         locale = "en_US.UTF-8";
       };
@@ -43,21 +39,6 @@
             ./hardware-configuration.nix
           ];
         specialArgs = {
-          inherit inputs;
-          inherit systemSettings;
-          inherit userSettings;
-        };
-      };
-    };
-
-    homeConfigurations = {
-      ${userSettings.username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules =
-          [
-            ./profiles/nixos/home.nix
-          ];
-        extraSpecialArgs = {
           inherit inputs;
           inherit systemSettings;
           inherit userSettings;
