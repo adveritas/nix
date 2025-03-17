@@ -8,13 +8,11 @@
 
   imports =
     [
-
+      ../../modules/user/git/git.nix
     ];
 
   home.packages = with pkgs; [
-    zsh
-    alacritty
-    brave
+
   ];
 
   home.stateVersion = "24.11";

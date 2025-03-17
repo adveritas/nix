@@ -22,6 +22,7 @@
       userSettings = rec {
         name = "William Dreyer";
         username = "wdreyer";
+        email = "w.h.dreyer@icloud.com";
       };
 
       pkgs = import nixpkgs { system = systemSettings.system; };
