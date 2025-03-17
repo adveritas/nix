@@ -2,18 +2,18 @@
   description = "wdreyer's Nix Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    #home-manager = {
+    #  url = "github:nix-community/home-manager";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
       systemSettings = {
         system = "x86_64-linux";
-        profile = "nixos";
+        arch = "x86_64";
         hostname = "nixstation";
         timezone = "America/New_York";
         locale = "en_US.UTF-8";
@@ -30,9 +30,8 @@
 
     in {
     nixosConfigurations = {
-      ${systemSettings.profile} = nixpkgs.lib.nixosSystem {
-        system = systemSettings.system;
-        inherit pkgs;
+      nixos = nixpkgs.lib.nixosSystem {
+        system = (systemSettings.arch + "-linux");
         modules =
           [
             ./profiles/nixos/configuration.nix
