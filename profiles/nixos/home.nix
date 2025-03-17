@@ -9,6 +9,7 @@
   imports =
     [
       ../../modules/user/git/git.nix
+      ../../modules/user/browser/firefox.nix
     ];
 
   home.packages = with pkgs; [

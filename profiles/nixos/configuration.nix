@@ -38,13 +38,9 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      git
       neovim
     ];
   };
-
-
-  programs.firefox.enable = true;
 
 
   environment.systemPackages = with pkgs; [
