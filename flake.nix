@@ -3,9 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs = inputs@{ self, disko, nixpkgs, ... }:
     let
       systemSettings = {
         system = "x86_64-linux";
@@ -29,6 +33,8 @@
         pkgs = import nixpkgs { system = (systemSettings.arch + "-linux"); };
         modules =
           [
+            disko.nixosModules.disko
+            ./btrfs-disko.nix
             ./profiles/nixos/configuration.nix
             ./hardware-configuration.nix
           ];
