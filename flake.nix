@@ -24,12 +24,12 @@
       
     in {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      desktop = nixpkgs.lib.nixosSystem {
         system = (systemSettings.arch + "-linux");
         pkgs = import nixpkgs { system = (systemSettings.arch + "-linux"); };
         modules =
           [
-            ./profiles/nixos/configuration.nix
+            ./profiles/desktop/configuration.nix
             ./hardware-configuration.nix
           ];
         specialArgs = {
