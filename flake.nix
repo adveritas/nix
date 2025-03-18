@@ -38,6 +38,20 @@
           inherit userSettings;
         };
       };
+      server = nixpkgs.lib.nixosSystem {
+	system = (systemSettings.arch + "-linux");
+	pkgs = import nixpkgs { system = (systemSettings.arch + "-linux"); };
+	modules = 
+          [
+	    ./profiles/server/configuration.nix
+	    ./hardware-configuration.nix
+	  ];
+	specialArgs = {
+	  inherit inputs;
+	  inherit systemSettings;
+	  inherit userSettings;
+	};
+      };
     };
   };
 }
