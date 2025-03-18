@@ -9,7 +9,7 @@
     let
       systemSettings = {
         system = "x86_64-linux";
-        arch = "x86_64";
+        arch = "aarch64";
         hostname = "nixstation";
         timezone = "America/New_York";
         locale = "en_US.UTF-8";
