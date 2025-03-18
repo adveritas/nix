@@ -12,6 +12,10 @@
     devices = [ "/dev/sda2" ];
   };
 
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+
+
   networking.hostName = systemSettings.hostname;
 
 
@@ -47,12 +51,6 @@
     ];
   };
 
-
-  users.users.root.initialPassword = "1234";
-  users.users.root.openssh.authorizedKeys.keys = [
-    # change this to your ssh key
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPpD8yghbIp8prILZOUi6WWswWkfQRW7zF5jALLFQW2s"
-  ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];  
   system.stateVersion = "24.11";
